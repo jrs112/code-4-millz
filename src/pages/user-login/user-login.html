@@ -1,0 +1,31 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>Civic'D</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="loginWrapStyle" padding>
+    <h1 class="logInHead" text-center>Log In</h1>
+    <form padding>
+      <ion-list>
+        <ion-item class="userNameInput">
+          <ion-icon name="person" item-left></ion-icon>
+          <ion-input type="text" name="userName" placeholder="Username"></ion-input>
+        </ion-item>
+        <ion-item class="userPassInput">
+          <ion-icon name="lock" item-left></ion-icon>
+          <ion-input type="password" name="userPassword" placeholder="Password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <button class="logInBtn" ion-button primary type="submit" block>Sign In</button>
+    </form>
+  </div>
+  <div text-center>
+    <button class="logInBtn" ion-button color="secondary" type="button" round [navPush]="startRegister">Create Account</button>
+  </div>
+</ion-content>
