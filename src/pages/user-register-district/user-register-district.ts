@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the UserRegisterDistrictPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { UserRegisterFinalPage } from "../user-register-final/user-register-final";
+import { RegisterService } from "../../services/register.service";
 
 @IonicPage()
 @Component({
@@ -15,11 +10,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UserRegisterDistrictPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserRegisterDistrictPage');
+  }
+
+  swipeRightEvent(e, form) {
+    if (form.valid) {
+      this.registerService.addUserZip(form.value.userZip);
+      this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000 });
+    }
   }
 
 }

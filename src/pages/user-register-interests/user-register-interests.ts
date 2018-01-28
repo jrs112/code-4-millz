@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {UserRegisterAboutPage } from "../user-register-about/user-register-about";
+import { RegisterService } from "../../services/register.service";
 
 @IonicPage()
 @Component({
@@ -9,7 +10,7 @@ import {UserRegisterAboutPage } from "../user-register-about/user-register-about
 })
 export class UserRegisterInterestsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService) {
   }
 
 
@@ -63,6 +64,7 @@ export class UserRegisterInterestsPage {
 
   swipeRightEvent(e) {
     if (this.selectedInterestArr.length > 0) {
+      this.registerService.addUserTags(this.selectedInterestArr);
       this.navCtrl.push(UserRegisterAboutPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000, });
     }
   }

@@ -9,6 +9,8 @@ import { UserRegisterAuthInfoPage } from "../pages/user-register-auth-info/user-
 import { EventsAllPage } from "../pages/events-all/events-all";
 import { HomePage } from "../pages/home/home";
 import { UserRegisterInterestsPage } from "../pages/user-register-interests/user-register-interests";
+import { UserRegisterAboutPage } from "../pages/user-register-about/user-register-about";
+import { UserRegisterDistrictPage } from "../pages/user-register-district/user-register-district";
 
 @Component({
   templateUrl: 'app.html'
@@ -18,6 +20,8 @@ export class MyApp {
   eventsPage = EventsAllPage;
   homePage = HomePage;
   interestsPage = UserRegisterInterestsPage;
+  aboutPage = UserRegisterAboutPage;
+  districtPage = UserRegisterDistrictPage;
   @ViewChild('nav') nav: NavController;
 
 

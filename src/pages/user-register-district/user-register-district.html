@@ -1,18 +1,23 @@
-<!--
-  Generated template for the UserRegisterDistrictPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>user-register-district</ion-title>
-  </ion-navbar>
-
+  <app-user-nav-menu></app-user-nav-menu>
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-grid (swiperight)="swipeRightEvent($event, f)">
+      <h1>Voting District</h1>
+      <form #f="ngForm" class="formStyle" padding>
+        <h4><strong>Zip Code*</strong></h4>
+        <ion-input class="inputStyle" id="userZip" type="text" name="userZip" ngModel required minlength="5" maxlength="5" #userZip="ngModel" placeholder="Enter your zip code"></ion-input>
+        <div *ngIf="!userZip.valid && userZip.touched && userZip.dirty">
+          <p class="error">
+            Zip Code Must Be 5 Digits
+          </p>
+        </div>
+      </form>
+      <div class="swipeDiv" text-center *ngIf="f.valid">
+        <h6><strong>(Swipe Right)</strong></h6>
+        <div class="iconStyle"><ion-icon name="md-arrow-round-forward"></ion-icon></div>
+      </div>
+  </ion-grid>
 </ion-content>

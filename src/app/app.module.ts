@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { UserNavMenuComponent } from "../components/user-nav-menu/user-nav-menu.component";
 import { NavProfilePopover } from "../components/popovers/nav-profile-popover";
+import { RegisterService } from "../services/register.service";
 import { UserLoginPage } from '../pages/user-login/user-login';
 import { UserRegisterAboutPage } from "../pages/user-register-about/user-register-about";
 import { UserRegisterAuthInfoPage } from "../pages/user-register-auth-info/user-register-auth-info";
@@ -57,7 +58,8 @@ import { UserSettingsPage } from "../pages/user-settings/user-settings";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RegisterService
   ]
 })
 export class AppModule {}
