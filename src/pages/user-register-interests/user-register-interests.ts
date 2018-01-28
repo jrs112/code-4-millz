@@ -1,12 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the UserRegisterInterestsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {UserRegisterAboutPage } from "../user-register-about/user-register-about";
 
 @IonicPage()
 @Component({
@@ -18,8 +12,59 @@ export class UserRegisterInterestsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+
+
+  aboutPage = UserRegisterAboutPage;
+  allTagsArr = ["Hornets", "Panthers", "Hurricanes", "Eagles", "Cubs", "Broncos", "Jaguars", "Colts", "Raptors", "Wizards", "Bills", "Browns", "Steelers", "Ravens", "Rams"];
+  firstColArr = [];
+  secondColArr = [];
+  thirdColArr = [];
+  selectedInterestArr = [];
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UserRegisterInterestsPage');
+    for (var i = 0; i < this.allTagsArr.length; i = i + 3) {
+      this.firstColArr.push(this.allTagsArr[i]);
+      if(this.allTagsArr[i + 1]) {
+        this.secondColArr.push(this.allTagsArr[i + 1]);
+      }
+      if(this.allTagsArr[i + 2]) {
+        this.thirdColArr.push(this.allTagsArr[i + 2]);
+      }
+    }
+  }
+
+  isActive(tag) {
+    for (var i = 0; i < this.selectedInterestArr.length; i++) {
+      if (tag == this.selectedInterestArr[i]) {
+        return true;
+      }
+    }
+      return false;
+  }
+
+  checkIndex(index) {
+    if (index == 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  selectTag(tag) {
+    for (var i = 0; i < this.selectedInterestArr.length; i++) {
+      if (tag == this.selectedInterestArr[i]) {
+        var newSelectArray = this.selectedInterestArr.filter((index) => index != tag);
+        this.selectedInterestArr = newSelectArray;
+        return;
+      }
+    }
+    this.selectedInterestArr.push(tag);
+  }
+
+  swipeRightEvent(e) {
+    if (this.selectedInterestArr.length > 0) {
+      this.navCtrl.push(UserRegisterAboutPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000, });
+    }
   }
 
 }

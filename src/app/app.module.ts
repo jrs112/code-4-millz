@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+import { UserNavMenuComponent } from "../components/user-nav-menu/user-nav-menu.component";
+import { NavProfilePopover } from "../components/popovers/nav-profile-popover";
 import { UserLoginPage } from '../pages/user-login/user-login';
 import { UserRegisterAboutPage } from "../pages/user-register-about/user-register-about";
 import { UserRegisterAuthInfoPage } from "../pages/user-register-auth-info/user-register-auth-info";
@@ -12,17 +14,26 @@ import { UserRegisterDistrictPage } from "../pages/user-register-district/user-r
 import { UserRegisterFinalPage } from"../pages/user-register-final/user-register-final";
 import { UserRegisterInterestsPage } from "../pages/user-register-interests/user-register-interests";
 import { UserRegisterTypePage } from "../pages/user-register-type/user-register-type";
+import { EventsAllPage } from "../pages/events-all/events-all";
+import { HomePage } from "../pages/home/home";
+import { UserSettingsPage } from "../pages/user-settings/user-settings";
+
 
 @NgModule({
   declarations: [
     MyApp,
+    UserNavMenuComponent,
+    NavProfilePopover,
     UserLoginPage,
     UserRegisterAboutPage,
     UserRegisterAuthInfoPage,
     UserRegisterDistrictPage,
     UserRegisterFinalPage,
     UserRegisterInterestsPage,
-    UserRegisterTypePage
+    UserRegisterTypePage,
+    EventsAllPage,
+    HomePage,
+    UserSettingsPage
   ],
   imports: [
     BrowserModule,
@@ -31,13 +42,17 @@ import { UserRegisterTypePage } from "../pages/user-register-type/user-register-
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    NavProfilePopover,
     UserLoginPage,
     UserRegisterAboutPage,
     UserRegisterAuthInfoPage,
     UserRegisterDistrictPage,
     UserRegisterFinalPage,
     UserRegisterInterestsPage,
-    UserRegisterTypePage
+    UserRegisterTypePage,
+    EventsAllPage,
+    HomePage,
+    UserSettingsPage
   ],
   providers: [
     StatusBar,
