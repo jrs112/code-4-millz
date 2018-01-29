@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {UserRegisterAboutPage } from "../user-register-about/user-register-about";
+import { UserRegisterFinalPage } from "../user-register-final/user-register-final";
 import { RegisterService } from "../../services/register.service";
 
 @IonicPage()
@@ -20,7 +21,9 @@ export class UserRegisterInterestsPage {
   firstColArr = [];
   secondColArr = [];
   thirdColArr = [];
-  selectedInterestArr = [];
+  selectedInterestArr = this.registerService.getUserTags();
+  isFinal = this.navParams.get("final");
+
 
   ionViewDidLoad() {
     for (var i = 0; i < this.allTagsArr.length; i = i + 3) {
@@ -32,6 +35,7 @@ export class UserRegisterInterestsPage {
         this.thirdColArr.push(this.allTagsArr[i + 2]);
       }
     }
+
   }
 
   isActive(tag) {
@@ -65,7 +69,11 @@ export class UserRegisterInterestsPage {
   swipeRightEvent(e) {
     if (this.selectedInterestArr.length > 0) {
       this.registerService.addUserTags(this.selectedInterestArr);
+      if(this.isFinal === true) {
+      this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000, });
+      } else {
       this.navCtrl.push(UserRegisterAboutPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000, });
+      }
     }
   }
 

@@ -12,6 +12,7 @@ export class UserRegisterDistrictPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService) {
   }
+  zip = this.registerService.getUserZip();
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserRegisterDistrictPage');

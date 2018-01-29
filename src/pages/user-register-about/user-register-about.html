@@ -8,14 +8,14 @@
       <h1>About</h1>
       <form #f="ngForm" class="formStyle" padding>
         <h5><strong>Name*</strong></h5>
-        <ion-input class="inputStyle" id="userName" type="text" name="userName" ngModel required #userName="ngModel"></ion-input>
+        <ion-input class="inputStyle" id="userName" type="text" name="userName" [(ngModel)]="name" required #userName="ngModel"></ion-input>
         <div *ngIf="!userName.valid && userName.touched">
           <p class="error">
             Name is required
           </p>
         </div>
         <h6><strong>Tell other members about yourself...</strong></h6>
-        <ion-textarea class="inputStyle" type="text" name="userAbout" ngModel id="userAbout" rows="7"></ion-textarea>
+        <ion-textarea class="inputStyle" type="text" name="userAbout" [(ngModel)]="userAbout" id="userAbout" rows="7"></ion-textarea>
       </form>
       <div class="swipeDiv" text-center *ngIf="f.valid">
         <h6><strong>(Swipe Right)</strong></h6>

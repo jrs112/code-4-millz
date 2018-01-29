@@ -11,6 +11,7 @@ import { HomePage } from "../pages/home/home";
 import { UserRegisterInterestsPage } from "../pages/user-register-interests/user-register-interests";
 import { UserRegisterAboutPage } from "../pages/user-register-about/user-register-about";
 import { UserRegisterDistrictPage } from "../pages/user-register-district/user-register-district";
+import { UserRegisterFinalPage } from "../pages/user-register-final/user-register-final";
 
 @Component({
   templateUrl: 'app.html'
@@ -22,6 +23,7 @@ export class MyApp {
   interestsPage = UserRegisterInterestsPage;
   aboutPage = UserRegisterAboutPage;
   districtPage = UserRegisterDistrictPage;
+  finalPage = UserRegisterFinalPage;
   @ViewChild('nav') nav: NavController;
 
 

@@ -25,4 +25,36 @@ export class RegisterService {
     this.userZip = zip;
     console.log(this.userZip);
   }
+
+  getUserInfo() {
+    var userObj = {
+      userName: this.userName,
+      userAbout: this.userAbout,
+      userTags: this.userTagsArr,
+      userZip: this.userZip
+    };
+    return userObj;
+  }
+
+  getUserTags() {
+    return this.userTagsArr;
+  }
+  getUserZip() {
+    return this.userZip;
+  }
+
+  getUserAbout() {
+    var aboutObj = {
+      name: this.userName,
+      about: this.userAbout
+    }
+    return aboutObj;
+  }
+
+  resetUserInfo() {
+    this.userName = "";
+    this.userAbout = "";
+    this.userTagsArr = [];
+    this.userZip = "";
+  }
 }

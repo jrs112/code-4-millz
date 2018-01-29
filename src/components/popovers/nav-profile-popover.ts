@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { ViewController, NavController, App } from "ionic-angular";
 import { UserLoginPage } from "../../pages/user-login/user-login";
 import { UserSettingsPage } from "../../pages/user-settings/user-settings";
+import { RegisterService } from "../../services/register.service";
 
 @Component({
   template: `
@@ -13,13 +14,14 @@ import { UserSettingsPage } from "../../pages/user-settings/user-settings";
   `
 })
 export class NavProfilePopover {
-  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public appCtrl: App) {}
+  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public appCtrl: App, private registerService: RegisterService) {}
 
   userName = "Kemba Walker"
 
 
   logout() {
     console.log("logged out");
+    this.registerService.resetUserInfo();
     this.viewCtrl.dismiss();
     this.appCtrl.getRootNav().push(UserLoginPage);
   }

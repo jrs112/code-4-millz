@@ -1,3 +1,28 @@
 page-user-register-final {
-
+  .cardStyle {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+  }
+  .rowStyle {
+    align-items: center;
+  }
+  .iconStyle {
+    font-size: 30px;
+  }
+  .titleStyle {
+    font-size: 25px;
+  }
+  .tagStyle {
+    margin-right: 5x;
+    margin-top: 5px;
+    padding: 7px;
+  }
+  .badgeColor {
+    background: rgb(255,77,0);
+  }
+  .submitBtn {
+    font-size: 25px;
+    margin: 0px;
+  }
 }
