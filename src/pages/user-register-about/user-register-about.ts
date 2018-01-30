@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { UserRegisterDistrictPage } from "../user-register-district/user-register-district";
 import { RegisterService } from "../../services/register.service";
 import { UserRegisterFinalPage } from"../user-register-final/user-register-final";
@@ -11,7 +11,7 @@ import { UserRegisterFinalPage } from"../user-register-final/user-register-final
 })
 export class UserRegisterAboutPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService, public viewCtrl: ViewController) {
   }
 
   aboutInfo = this.registerService.getUserAbout();
@@ -23,6 +23,10 @@ export class UserRegisterAboutPage {
     this.name = this.aboutInfo.name;
     this.userAbout = this.aboutInfo.about;
   }
+  ionViewWillEnter() {
+    if(this.navParams.get("noBack"))
+        this.viewCtrl.showBackButton(false);
+    }
 
   swipeRightEvent(e, form) {
     if (form.valid) {

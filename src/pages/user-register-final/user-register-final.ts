@@ -46,7 +46,7 @@ export class UserRegisterFinalPage {
       }
     } else {
       for (var j = 0; j < 9; j = j + 3) {
-        this.firstTagsArr.push(array[i]);
+        this.firstTagsArr.push(array[j]);
         if(array[j + 1]) {
           this.secondTagsArr.push(array[j + 1]);
         }
@@ -74,13 +74,13 @@ export class UserRegisterFinalPage {
 
 
   backToTags() {
-    this.navCtrl.push(UserRegisterInterestsPage, {final: true}, {animate: true, animation: "ios-transition", direction: "back", duration: 1000, });
+    this.navCtrl.push(UserRegisterInterestsPage, {final: true, noBack: true}, {animate: true, animation: "ios-transition", direction: "back", duration: 1000, });
   }
   backToAbout() {
-    this.navCtrl.push(UserRegisterAboutPage, {final: true}, {animate: true, animation: "ios-transition", direction: "back", duration: 1000, });
+    this.navCtrl.push(UserRegisterAboutPage, {final: true, noBack: true}, {animate: true, animation: "ios-transition", direction: "back", duration: 1000, });
   }
   backToDistrict() {
-    this.navCtrl.push(UserRegisterDistrictPage, {final: true}, {animate: true, animation: "ios-transition", direction: "back", duration: 1000, });
+    this.navCtrl.push(UserRegisterDistrictPage, {final: true, noBack: true}, {animate: true, animation: "ios-transition", direction: "back", duration: 1000, });
   }
 
 

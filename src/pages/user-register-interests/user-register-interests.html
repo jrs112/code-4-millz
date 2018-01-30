@@ -25,7 +25,7 @@
       <ion-col>
         <div class="skipDiv" text-center *ngIf="selectedInterestArr.length == 0">
           <h6>Click Tags Above to Add Your Interests</h6>
-          <button [navPush]="aboutPage"class="skipBtn" ion-button color="danger">Skip</button>
+          <button (click)="skipTags()" class="skipBtn" ion-button color="danger">Skip</button>
         </div>
         <div class="skipDiv" text-center *ngIf="selectedInterestArr.length > 0">
           <div class="card">
