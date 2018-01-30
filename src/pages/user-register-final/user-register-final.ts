@@ -45,13 +45,13 @@ export class UserRegisterFinalPage {
         }
       }
     } else {
-      for (var i = 0; i < 9; i = i + 3) {
+      for (var j = 0; j < 9; j = j + 3) {
         this.firstTagsArr.push(array[i]);
-        if(array[i + 1]) {
-          this.secondTagsArr.push(array[i + 1]);
+        if(array[j + 1]) {
+          this.secondTagsArr.push(array[j + 1]);
         }
-        if(array[i + 2]) {
-          this.thirdTagsArr.push(array[i + 2]);
+        if(array[j + 2]) {
+          this.thirdTagsArr.push(array[j + 2]);
         }
       }
       this.thirdTagsArr.splice(-1, 1, "...")
@@ -64,7 +64,12 @@ export class UserRegisterFinalPage {
   submitAllInfo() {
     console.log("submitting info: ", this.userInfo);
     this.success = true;
-    this.navCtrl.push(HomePage, {noBack: true}, {animate: true, animation: "ios-transition", direction: "forward", duration: 5000, })
+    setTimeout(() => {this.navCtrl.setRoot(HomePage, {noBack: true}, {animate: true, animation: "ios-transition", direction: "forward", duration: 3000, })}, 1500);
+
+  }
+
+  goHome() {
+    this.navCtrl.setRoot(HomePage, {noBack: true}, {animate: true, animation: "ios-transition", direction: "forward", duration: 5000, })
   }
 
 
