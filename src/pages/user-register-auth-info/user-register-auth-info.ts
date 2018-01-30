@@ -21,7 +21,7 @@ export class UserRegisterAuthInfoPage {
   }
   formValid = false;
   loginPage = UserLoginPage;
-  portfolioPic = "../../assets/imgs/default_portfolio.png"
+  portfolioPic = "assets/imgs/default_portfolio.png"
 
 
   ionViewDidLoad() {

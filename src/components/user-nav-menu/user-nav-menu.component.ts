@@ -8,7 +8,7 @@ import { NavProfilePopover } from "../../components/popovers/nav-profile-popover
 })
 export class UserNavMenuComponent implements OnInit {
   constructor(public popoverCtrl: PopoverController, public navParams: NavParams) {}
-  portfolioPic = "../../assets/imgs/default_portfolio.png"
+  portfolioPic = "assets/imgs/default_portfolio.png"
   userName = "Kemba Walker";
 
   ngOnInit() {

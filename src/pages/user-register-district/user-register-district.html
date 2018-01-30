@@ -8,7 +8,7 @@
       <h1>Voting District</h1>
       <form #f="ngForm" class="formStyle" padding>
         <h4><strong>Zip Code*</strong></h4>
-        <ion-input class="inputStyle" id="userZip" type="text" name="userZip" [(ngModel)]="zip" required minlength="5" maxlength="5" #userZip="ngModel" placeholder="Enter your zip code"></ion-input>
+        <ion-input class="inputStyle" id="userZip" type="number" name="userZip" [(ngModel)]="zip" required minlength="5" maxlength="5" #userZip="ngModel" placeholder="Enter your zip code"></ion-input>
         <div *ngIf="!userZip.valid && userZip.touched && userZip.dirty">
           <p class="error">
             Zip Code Must Be 5 Digits
