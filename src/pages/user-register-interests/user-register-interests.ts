@@ -122,19 +122,23 @@ export class UserRegisterInterestsPage {
     if (this.selectedInterestArr.length > 0) {
       this.registerService.addUserTags(this.selectedInterestArr);
       if(this.isFinal === true) {
-      this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000, });
+      this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
       } else {
-      this.navCtrl.push(UserRegisterAboutPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000, });
+      this.navCtrl.push(UserRegisterAboutPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
       }
     }
   }
 
   skipTags() {
     if(this.isFinal === true) {
-    this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000, });
+    this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
     } else {
-    this.navCtrl.push(UserRegisterAboutPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000, });
+    this.navCtrl.push(UserRegisterAboutPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
     }
+  }
+
+  goBack() {
+    this.navCtrl.pop();
   }
 
 }
