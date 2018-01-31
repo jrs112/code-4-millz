@@ -17,16 +17,18 @@ export class UserRegisterInterestsPage {
 
 
   aboutPage = UserRegisterAboutPage;
-  allTagsArr = ["Hornets", "Panthers", "Hurricanes", "Eagles", "Cubs", "Broncos", "Jaguars", "Colts", "Raptors", "Wizards", "Bills", "Browns", "Steelers", "Ravens", "Rams"];
+  allTagsArr = ["Liberal", "Conservative", "Moderate", "Activism", "Transit", "Feminism", "Civil Rights", "Town Hall", "Net Neutrality", "Taxes", "Voting Rights", "Inequality", "Income Gap", "Socialism", "Libertarism", "Affordable Housing", "Healthcare", "Obesity", "Mental Health", "Entitlements", "Police", "Privacy", "Internet Connectivity", "Nutrition", "Social Media", "Grassroots", "Small Business"];
   firstColArr = [];
   secondColArr = [];
   thirdColArr = [];
+  searchArr = [];
+  myInput = "";
   selectedInterestArr = this.registerService.getUserTags();
   isFinal = this.navParams.get("final");
 
 
   ionViewDidLoad() {
-    for (var i = 0; i < this.allTagsArr.length; i = i + 3) {
+    for (var i = 0; i < 9; i = i + 3) {
       this.firstColArr.push(this.allTagsArr[i]);
       if(this.allTagsArr[i + 1]) {
         this.secondColArr.push(this.allTagsArr[i + 1]);
@@ -59,6 +61,7 @@ export class UserRegisterInterestsPage {
     }
   }
 
+
   selectTag(tag) {
     for (var i = 0; i < this.selectedInterestArr.length; i++) {
       if (tag == this.selectedInterestArr[i]) {
@@ -70,7 +73,52 @@ export class UserRegisterInterestsPage {
     this.selectedInterestArr.push(tag);
   }
 
-  swipeRightEvent(e) {
+  setSearchItems() {
+    this.searchArr = [];
+    for (var i = 9; i < this.allTagsArr.length; i++) {
+      this.searchArr.push(this.allTagsArr[i]);
+    }
+    for(var j = 0; j < this.selectedInterestArr.length; j++) {
+      this.searchArr = this.searchArr.filter((index) => index != this.selectedInterestArr[j]);
+    }
+  }
+
+  onInput(event) {
+    console.log("Got Input");
+    let val = event.target.value;
+    console.log(event.target.value);
+    if (val != undefined) {
+    this.setSearchItems();
+    }
+    if (val && val.trim() !== '') {
+      this.searchArr = this.searchArr.filter(function(item) {
+        return item.toLowerCase().includes(val.toLowerCase());
+      });
+    }
+  }
+
+  onCancel() {
+    this.searchArr = [];
+    console.log("GOT CANCEL");
+  }
+  onBlur() {
+    setTimeout(() => {this.searchArr = []}, 0);
+    this.myInput = "";
+  }
+
+  addSearchTag(tag) {
+    for (var i = 0; i < this.selectedInterestArr.length; i++) {
+      if (tag == this.selectedInterestArr[i]) {
+        var newSelectArray = this.selectedInterestArr.filter((index) => index != tag);
+        this.selectedInterestArr = newSelectArray;
+        return;
+      }
+    }
+    this.selectedInterestArr.push(tag);
+    this.searchArr=[];
+  }
+
+  swipeRightEvent() {
     if (this.selectedInterestArr.length > 0) {
       this.registerService.addUserTags(this.selectedInterestArr);
       if(this.isFinal === true) {
