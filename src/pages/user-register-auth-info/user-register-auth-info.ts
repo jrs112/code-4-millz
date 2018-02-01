@@ -27,11 +27,14 @@ export class UserRegisterAuthInfoPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserRegisterAuthInfoPage');
   }
-  swipeRightEvent(e, form) {
+  swipeRightEvent(form) {
     if (form.valid) {
-      this.navCtrl.push(UserRegisterInterestsPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000, });
+      this.navCtrl.push(UserRegisterInterestsPage, {}, {animate: true, animation: "ios-transition", direction: "forward" });
     }
 
+  }
+  goBack() {
+    this.navCtrl.pop({animate: true, animation: "ios-transition"});
   }
 
 

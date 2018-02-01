@@ -25,6 +25,7 @@ export class MyApp {
   aboutPage = UserRegisterAboutPage;
   districtPage = UserRegisterDistrictPage;
   finalPage = UserRegisterFinalPage;
+  authPage = UserRegisterAuthInfoPage;
   @ViewChild('nav') nav: NavController;
 
 
