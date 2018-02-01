@@ -4,6 +4,12 @@ page-user-register-final {
     border-width: 2px;
     border-color: black;
   }
+  .tagCardStyle {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    padding: 2px;
+  }
   .rowStyle {
     align-items: center;
   }
@@ -14,15 +20,17 @@ page-user-register-final {
     font-size: 25px;
   }
   .tagStyle {
-    margin-right: 5x;
     margin-top: 5px;
-    padding: 7px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
   }
   .badgeColor {
     background: rgb(255,77,0);
   }
   .submitBtn {
-    font-size: 25px;
-    margin: 0px;
+    font-size: 30px;
+    margin-top: 10px;
   }
 }

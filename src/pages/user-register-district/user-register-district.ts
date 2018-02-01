@@ -13,16 +13,20 @@ export class UserRegisterDistrictPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService, public viewCtrl: ViewController) {
   }
   zip = this.registerService.getUserZip();
+  fromFinal = false;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserRegisterDistrictPage');
   }
   ionViewWillEnter() {
-    if(this.navParams.get("noBack"))
+    if(this.navParams.get("noBack")) {
         this.viewCtrl.showBackButton(false);
+        this.fromFinal = true;
+        console.log(this.fromFinal);
+      }
     }
 
-  swipeRightEvent(e, form) {
+  swipeRightEvent(form) {
     if (form.valid) {
       this.registerService.addUserZip(form.value.userZip);
       this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000 });
