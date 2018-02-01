@@ -12,6 +12,7 @@ import { UserRegisterInterestsPage } from "../pages/user-register-interests/user
 import { UserRegisterAboutPage } from "../pages/user-register-about/user-register-about";
 import { UserRegisterDistrictPage } from "../pages/user-register-district/user-register-district";
 import { UserRegisterFinalPage } from "../pages/user-register-final/user-register-final";
+import { OrgInviteRequestPage } from "../pages/org-invite-request/org-invite-request";
 
 @Component({
   templateUrl: 'app.html'

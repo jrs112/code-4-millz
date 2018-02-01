@@ -18,6 +18,7 @@ import { UserRegisterTypePage } from "../pages/user-register-type/user-register-
 import { EventsAllPage } from "../pages/events-all/events-all";
 import { HomePage } from "../pages/home/home";
 import { UserSettingsPage } from "../pages/user-settings/user-settings";
+import { OrgInviteRequestPage } from "../pages/org-invite-request/org-invite-request";
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { UserSettingsPage } from "../pages/user-settings/user-settings";
     UserRegisterTypePage,
     EventsAllPage,
     HomePage,
-    UserSettingsPage
+    UserSettingsPage,
+    OrgInviteRequestPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { UserSettingsPage } from "../pages/user-settings/user-settings";
     UserRegisterTypePage,
     EventsAllPage,
     HomePage,
-    UserSettingsPage
+    UserSettingsPage,
+    OrgInviteRequestPage
   ],
   providers: [
     StatusBar,
