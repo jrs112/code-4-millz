@@ -43,7 +43,7 @@
     </ion-row>
     <ion-row>
       <ion-col col-6 text-center>
-        <button ion-button click="goBack()" color="light" icon-left><ion-icon name="arrow-back"></ion-icon>Previous</button>
+        <button *ngIf="!isFinal" ion-button navPop color="light" icon-left><ion-icon name="arrow-back"></ion-icon>Previous</button>
       </ion-col>
       <ion-col col-6 text-center>
           <button *ngIf="selectedInterestArr.length == 0" (click)="skipTags()" class="skipBtn" color="light" ion-button icon-right>Skip<ion-icon name="arrow-forward"></ion-icon></button>

@@ -28,7 +28,7 @@ export class UserRegisterAboutPage {
         this.viewCtrl.showBackButton(false);
     }
 
-  swipeRightEvent(e, form) {
+  swipeRightEvent(form) {
     if (form.valid) {
       this.registerService.addUserInfo(form.value.userName, form.value.userAbout);
       if(this.isFinal === true) {
@@ -38,5 +38,6 @@ export class UserRegisterAboutPage {
       }
     }
   }
+
 
 }

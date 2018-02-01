@@ -28,6 +28,7 @@ export class UserRegisterInterestsPage {
 
 
   ionViewDidLoad() {
+    // load the three column array for displaying popular tags
     for (var i = 0; i < 9; i = i + 3) {
       this.firstColArr.push(this.allTagsArr[i]);
       if(this.allTagsArr[i + 1]) {
@@ -40,11 +41,13 @@ export class UserRegisterInterestsPage {
 
   }
   ionViewWillEnter() {
+    // remove back button from navbar if we are coming from the final register page
     if(this.navParams.get("noBack"))
         this.viewCtrl.showBackButton(false);
     }
 
   isActive(tag) {
+    //add or remove class depending on if the tag has been selected. set to tags displayed at the top of the page.
     for (var i = 0; i < this.selectedInterestArr.length; i++) {
       if (tag == this.selectedInterestArr[i]) {
         return true;
@@ -54,6 +57,7 @@ export class UserRegisterInterestsPage {
   }
 
   checkIndex(index) {
+    //this is being applied to the selected tag display to the extra top margin is not added to the first tag.
     if (index == 0) {
       return false;
     } else {
@@ -63,6 +67,7 @@ export class UserRegisterInterestsPage {
 
 
   selectTag(tag) {
+    //function for selecting tags to add or remove them to the selected interest array
     for (var i = 0; i < this.selectedInterestArr.length; i++) {
       if (tag == this.selectedInterestArr[i]) {
         var newSelectArray = this.selectedInterestArr.filter((index) => index != tag);
@@ -74,22 +79,27 @@ export class UserRegisterInterestsPage {
   }
 
   setSearchItems() {
+    //for putting the tags in the array that the search bar is pulling from.
     this.searchArr = [];
     for (var i = 9; i < this.allTagsArr.length; i++) {
       this.searchArr.push(this.allTagsArr[i]);
     }
+    //removes tags that have already been selected from the search array.
     for(var j = 0; j < this.selectedInterestArr.length; j++) {
       this.searchArr = this.searchArr.filter((index) => index != this.selectedInterestArr[j]);
     }
   }
 
+  //function being ran during each event like a keystrok in the search input field.
   onInput(event) {
     console.log("Got Input");
     let val = event.target.value;
     console.log(event.target.value);
+    //if statement is to prevent the array being rest when we are doing a cancel event.
     if (val != undefined) {
     this.setSearchItems();
     }
+    //checks to remove tags that do not match the string entered in the search input.
     if (val && val.trim() !== '') {
       this.searchArr = this.searchArr.filter(function(item) {
         return item.toLowerCase().includes(val.toLowerCase());
@@ -137,8 +147,6 @@ export class UserRegisterInterestsPage {
     }
   }
 
-  goBack() {
-    this.navCtrl.pop();
-  }
+
 
 }
