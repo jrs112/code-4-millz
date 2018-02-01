@@ -24,7 +24,7 @@ export class UserRegisterInterestsPage {
   searchArr = [];
   myInput = "";
   selectedInterestArr = this.registerService.getUserTags();
-
+  isFinal = this.navParams.get("final");
 
 
   ionViewDidLoad() {
