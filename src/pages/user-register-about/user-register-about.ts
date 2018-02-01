@@ -32,11 +32,14 @@ export class UserRegisterAboutPage {
     if (form.valid) {
       this.registerService.addUserInfo(form.value.userName, form.value.userAbout);
       if(this.isFinal === true) {
-      this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000, });
+      this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
       } else {
-      this.navCtrl.push(UserRegisterDistrictPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000, });
+      this.navCtrl.push(UserRegisterDistrictPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
       }
     }
+  }
+  goBack() {
+    this.navCtrl.pop({animate: true, animation: "ios-transition"});
   }
 
 

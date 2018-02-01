@@ -24,7 +24,7 @@ export class UserRegisterInterestsPage {
   searchArr = [];
   myInput = "";
   selectedInterestArr = this.registerService.getUserTags();
-  isFinal = this.navParams.get("final");
+
 
 
   ionViewDidLoad() {
@@ -41,11 +41,9 @@ export class UserRegisterInterestsPage {
 
   }
   ionViewWillEnter() {
-    // remove back button from navbar if we are coming from the final register page
-    if(this.navParams.get("noBack"))
-        this.viewCtrl.showBackButton(false);
-    }
-
+    // remove back button from navbar
+    this.viewCtrl.showBackButton(false);
+  }
   isActive(tag) {
     //add or remove class depending on if the tag has been selected. set to tags displayed at the top of the page.
     for (var i = 0; i < this.selectedInterestArr.length; i++) {
@@ -145,6 +143,10 @@ export class UserRegisterInterestsPage {
     } else {
     this.navCtrl.push(UserRegisterAboutPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
     }
+  }
+
+  goBack() {
+    this.navCtrl.pop({animate: true, animation: "ios-transition"});
   }
 
 

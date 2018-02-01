@@ -32,5 +32,8 @@ export class UserRegisterDistrictPage {
       this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward", duration: 1000 });
     }
   }
+  goBack() {
+    this.navCtrl.pop({animate: true, animation: "ios-transition"});
+  }
 
 }
