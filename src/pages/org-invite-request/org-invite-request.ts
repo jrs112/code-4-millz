@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the OrgInviteRequestPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+import {UserLoginPage} from "../user-login/user-login";
 @IonicPage()
 @Component({
   selector: 'page-org-invite-request',
@@ -18,8 +11,15 @@ export class OrgInviteRequestPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  loginPage = UserLoginPage;
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrgInviteRequestPage');
+  }
+
+  submitOrgInfo(form) {
+    var orgInfo = form.value;
+    console.log(orgInfo);
   }
 
 }
