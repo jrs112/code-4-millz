@@ -139,6 +139,7 @@ export class UserRegisterInterestsPage {
 
   skipTags() {
     if(this.isFinal === true) {
+      this.registerService.addUserTags([]);
     this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
     } else {
     this.navCtrl.push(UserRegisterAboutPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
