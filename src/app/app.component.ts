@@ -26,6 +26,7 @@ export class MyApp {
   districtPage = UserRegisterDistrictPage;
   finalPage = UserRegisterFinalPage;
   authPage = UserRegisterAuthInfoPage;
+  orgInviteRequestPage = OrgInviteRequestPage;
   @ViewChild('nav') nav: NavController;
 
 

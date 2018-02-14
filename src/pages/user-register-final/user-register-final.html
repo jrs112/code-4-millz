@@ -24,13 +24,13 @@
               <h5 text-center padding>You have not selected any interests.</h5>
             </div>
               <ion-col col-4>
-                <div *ngFor="let tags of firstTagsArr"><ion-badge class="tagStyle badgeColor">#{{tags}}</ion-badge></div>
+                <div *ngFor="let tags of firstTagsArr" text-center><ion-badge class="tagStyle badgeColor">#{{tags}}</ion-badge></div>
               </ion-col>
               <ion-col col-4>
-                <div *ngFor="let tags of secondTagsArr" text-left><ion-badge class="tagStyle badgeColor">#{{tags}}</ion-badge></div>
+                <div *ngFor="let tags of secondTagsArr" text-center><ion-badge class="tagStyle badgeColor">#{{tags}}</ion-badge></div>
               </ion-col>
               <ion-col col-4>
-                <div *ngFor="let tags of thirdTagsArr" text-right><ion-badge class="tagStyle badgeColor">#{{tags}}</ion-badge></div>
+                <div *ngFor="let tags of thirdTagsArr" text-center><ion-badge class="tagStyle badgeColor">#{{tags}}</ion-badge></div>
               </ion-col>
           </ion-row>
         </div>

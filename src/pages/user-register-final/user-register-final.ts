@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { RegisterService } from "../../services/register.service";
 import { UserRegisterInterestsPage } from "../user-register-interests/user-register-interests";
 import { UserRegisterAboutPage } from "../user-register-about/user-register-about";
@@ -13,7 +13,7 @@ import { HomePage } from "../home/home";
 })
 export class UserRegisterFinalPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService:RegisterService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService:RegisterService, public viewCtrl: ViewController) {
   }
 
   firstTagsArr = [];
@@ -27,6 +27,11 @@ export class UserRegisterFinalPage {
     console.log('ionViewDidLoad UserRegisterFinalPage');
     console.log(this.userInfo);
     this.setTagArrays(this.userInfo.userTags);
+  }
+
+  ionViewWillEnter() {
+    // remove back button from navbar
+    this.viewCtrl.showBackButton(false);
   }
 
   setTagArrays(array) {
