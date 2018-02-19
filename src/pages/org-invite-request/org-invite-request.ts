@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {UserLoginPage} from "../user-login/user-login";
 @IonicPage()
 @Component({
@@ -8,7 +8,7 @@ import {UserLoginPage} from "../user-login/user-login";
 })
 export class OrgInviteRequestPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
   }
 
   loginPage = UserLoginPage;
@@ -20,6 +20,21 @@ export class OrgInviteRequestPage {
   submitOrgInfo(form) {
     var orgInfo = form.value;
     console.log(orgInfo);
+    let alert = this.alertCtrl.create({
+      title: "Thank You!",
+      subTitle: "We received your request and will follow up with you at " + form.value.orgEmail + " once we review your information.",
+      buttons: [{
+        text: "OK",
+        handler: () => {
+          let navTransition = alert.dismiss();
+          navTransition.then(() => {
+            this.navCtrl.pop();
+          });
+          return false;
+        }
+      }]
+    });
+    alert.present();
   }
 
 }
