@@ -26,8 +26,7 @@ export class OrgInviteRequestPage {
       buttons: [{
         text: "OK",
         handler: () => {
-          let navTransition = alert.dismiss();
-          navTransition.then(() => {
+          alert.dismiss().then(() => {
             this.navCtrl.pop();
           });
           return false;
