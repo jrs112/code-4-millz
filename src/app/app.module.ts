@@ -18,6 +18,9 @@ import { EventsAllPage } from "../pages/events-all/events-all";
 import { HomePage } from "../pages/home/home";
 import { UserSettingsPage } from "../pages/user-settings/user-settings";
 import { OrgInviteRequestPage } from "../pages/org-invite-request/org-invite-request";
+import { OrgPostEventPage } from "../pages/org-post-event/org-post-event";
+import { DatePicker } from '@ionic-native/date-picker';
+
 
 
 @NgModule({
@@ -35,7 +38,8 @@ import { OrgInviteRequestPage } from "../pages/org-invite-request/org-invite-req
     EventsAllPage,
     HomePage,
     UserSettingsPage,
-    OrgInviteRequestPage
+    OrgInviteRequestPage,
+    OrgPostEventPage
   ],
   imports: [
     BrowserModule,
@@ -55,13 +59,15 @@ import { OrgInviteRequestPage } from "../pages/org-invite-request/org-invite-req
     EventsAllPage,
     HomePage,
     UserSettingsPage,
-    OrgInviteRequestPage
+    OrgInviteRequestPage,
+    OrgPostEventPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RegisterService
+    RegisterService,
+    DatePicker
   ]
 })
 export class AppModule {}
