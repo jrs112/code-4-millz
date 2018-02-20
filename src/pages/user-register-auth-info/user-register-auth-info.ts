@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { UserLoginPage } from '../user-login/user-login';
 import { UserRegisterInterestsPage } from "../user-register-interests/user-register-interests";
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
-/**
- * Generated class for the UserRegisterAuthInfoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -17,18 +13,19 @@ import { UserRegisterInterestsPage } from "../user-register-interests/user-regis
 })
 export class UserRegisterAuthInfoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, public alertCtrl: AlertController) {
   }
   formValid = false;
   loginPage = UserLoginPage;
   portfolioPic = "assets/imgs/default_portfolio.png"
+  imageLoad = false;
 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserRegisterAuthInfoPage');
   }
   swipeRightEvent(form) {
-    if (form.valid) {
+    if (form.valid && !this.imageLoad) {
       this.navCtrl.push(UserRegisterInterestsPage, {}, {animate: true, animation: "ios-transition", direction: "forward" });
     }
 
@@ -36,6 +33,77 @@ export class UserRegisterAuthInfoPage {
   goBack() {
     this.navCtrl.pop({animate: true, animation: "ios-transition"});
   }
+
+
+
+  uploadPic() {
+    let alert = this.alertCtrl.create({
+      title: 'Select Image Source',
+      buttons: [
+        {
+          text: "From Library",
+          handler: () => {
+            this.imageLoad = true;
+            const options: CameraOptions = {
+            quality: 100,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE,
+            sourceType: 0
+            }
+
+            this.camera.getPicture(options).then((imageData) => {
+             // imageData is either a base64 encoded string or a file URI
+             // If it's base64:
+             console.log("image data: ", imageData);
+             let base64Image = 'data:image/jpeg;base64,' + imageData;
+             console.log("Base64Img: ", base64Image);
+             this.portfolioPic = base64Image;
+             this.imageLoad = false;
+            }, (err) => {
+             // Handle error
+             console.log("got an error", err);
+             this.imageLoad = false;
+            });
+          }
+        },
+        {
+          text: "From Camera",
+          handler: () => {
+            this.imageLoad = true;
+            const options: CameraOptions = {
+            quality: 100,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE,
+            cameraDirection: 1,
+            allowEdit: true
+            }
+
+            this.camera.getPicture(options).then((imageData) => {
+             // imageData is either a base64 encoded string or a file URI
+             // If it's base64:
+             console.log("image data: ", imageData);
+             let base64Image = 'data:image/jpeg;base64,' + imageData;
+             console.log("Base64Img: ", base64Image);
+             this.portfolioPic = base64Image;
+             this.imageLoad = false;
+            }, (err) => {
+             // Handle error
+             console.log("got an error", err);
+             this.imageLoad = false;
+            });
+          }
+        },
+        {
+          text: "Cancel",
+          role: "cancel"
+        }
+      ]
+    });
+    alert.present();
+  }
+
 
 
 

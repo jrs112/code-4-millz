@@ -20,6 +20,7 @@ import { UserSettingsPage } from "../pages/user-settings/user-settings";
 import { OrgInviteRequestPage } from "../pages/org-invite-request/org-invite-request";
 import { OrgPostEventPage } from "../pages/org-post-event/org-post-event";
 import { DatePicker } from '@ionic-native/date-picker';
+import { Camera } from '@ionic-native/camera';
 
 
 
@@ -67,7 +68,8 @@ import { DatePicker } from '@ionic-native/date-picker';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegisterService,
-    DatePicker
+    DatePicker,
+    Camera
   ]
 })
 export class AppModule {}
