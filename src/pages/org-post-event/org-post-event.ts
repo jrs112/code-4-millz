@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { DatePicker } from '@ionic-native/date-picker';
-/**
- * Generated class for the OrgPostEventPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @IonicPage()
 @Component({
@@ -15,9 +10,15 @@ import { DatePicker } from '@ionic-native/date-picker';
 })
 export class OrgPostEventPage {
 
+  placeImage= "";
+  imageLoad = false;
+  imageUploaded = false;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private datePicker: DatePicker) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private datePicker: DatePicker,
+              public actionSheetCtrl: ActionSheetController,
+              private camera: Camera) {
   }
 
   ionViewDidLoad() {
@@ -43,6 +44,78 @@ export class OrgPostEventPage {
     console.log("Got Error: ", err)
   }
 );
+  }
+
+  uploadPic() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Select Image Source',
+      buttons: [
+        {
+          text: "From Library",
+          icon: "folder",
+          handler: () => {
+            this.imageLoad = true;
+            const options: CameraOptions = {
+            quality: 100,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE,
+            sourceType: 0
+            }
+
+            this.camera.getPicture(options).then((imageData) => {
+             // imageData is either a base64 encoded string or a file URI
+             // If it's base64:
+             console.log("image data: ", imageData);
+             let base64Image = 'data:image/jpeg;base64,' + imageData;
+             console.log("Base64Img: ", base64Image);
+             this.placeImage = base64Image;
+             this.imageLoad = false;
+             this.imageUploaded = true;
+            }, (err) => {
+             // Handle error
+             console.log("got an error", err);
+             this.imageLoad = false;
+            });
+          }
+        },
+        {
+          text: "From Camera",
+          icon: "camera",
+          handler: () => {
+            this.imageLoad = true;
+            const options: CameraOptions = {
+            quality: 100,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE,
+            cameraDirection: 1,
+            allowEdit: true
+            }
+
+            this.camera.getPicture(options).then((imageData) => {
+             // imageData is either a base64 encoded string or a file URI
+             // If it's base64:
+             console.log("image data: ", imageData);
+             let base64Image = 'data:image/jpeg;base64,' + imageData;
+             console.log("Base64Img: ", base64Image);
+             this.placeImage = base64Image;
+             this.imageLoad = false;
+             this.imageUploaded = true;
+            }, (err) => {
+             // Handle error
+             console.log("got an error", err);
+             this.imageLoad = false;
+            });
+          }
+        },
+        {
+          text: "Cancel",
+          role: "cancel"
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
 }

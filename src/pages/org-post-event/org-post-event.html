@@ -32,7 +32,7 @@
           </div>
           <ion-label stacked><strong>Event Description</strong></ion-label>
           <ion-textarea class="inputStyle" type="text" name="eventDescription" ngModel></ion-textarea>
-          <ion-item>
+          <ion-item class="selectItemStyle">
             <ion-label stacked color="dark"><strong>Event Type:</strong></ion-label>
             <ion-select ngModel name="eventType">
               <ion-option value="good">Good</ion-option>
@@ -45,11 +45,17 @@
           <ion-label stacked><strong>Tags</strong></ion-label>
           <ion-input class="inputStyle" type="text" name="eventTags" ngModel></ion-input>
           <div text-center>
-            <button ion-button icon-end color="light" class="picBtnStyle" small>Upload Pic +</button>
+            <button *ngIf="!imageLoad" (click)="uploadPic()" ion-button icon-end color="light" class="picBtnStyle" small>Upload Pic +</button>
+            <button [disabled]="true" *ngIf="imageLoad" ion-button color="success">Image loading...</button>
+          </div>
+          <div *ngIf="imageUploaded">
+            <ion-card>
+              <img [src]="placeImage" height="250">
+            </ion-card>
           </div>
           <hr />
           <div text-center>
-            <button ion-button icon-end color="success" class="picBtnStyle">Submit Event</button>
+            <button [disabled]="!f.valid && !imageLoad && eventDate !=''" ion-button icon-end color="success" class="picBtnStyle">Submit Event</button>
           </div>
         </form>
       </ion-col>
