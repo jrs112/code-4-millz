@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { UserLoginPage } from '../user-login/user-login';
 import { UserRegisterInterestsPage } from "../user-register-interests/user-register-interests";
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -13,12 +13,13 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class UserRegisterAuthInfoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, public actionSheetCtrl: ActionSheetController) {
   }
   formValid = false;
   loginPage = UserLoginPage;
   portfolioPic = "assets/imgs/default_portfolio.png"
   imageLoad = false;
+
 
 
   ionViewDidLoad() {
@@ -37,11 +38,12 @@ export class UserRegisterAuthInfoPage {
 
 
   uploadPic() {
-    let alert = this.alertCtrl.create({
+    let actionSheet = this.actionSheetCtrl.create({
       title: 'Select Image Source',
       buttons: [
         {
           text: "From Library",
+          icon: "folder",
           handler: () => {
             this.imageLoad = true;
             const options: CameraOptions = {
@@ -69,6 +71,7 @@ export class UserRegisterAuthInfoPage {
         },
         {
           text: "From Camera",
+          icon: "camera",
           handler: () => {
             this.imageLoad = true;
             const options: CameraOptions = {
@@ -101,7 +104,7 @@ export class UserRegisterAuthInfoPage {
         }
       ]
     });
-    alert.present();
+    actionSheet.present();
   }
 
 

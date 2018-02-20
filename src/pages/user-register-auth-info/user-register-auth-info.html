@@ -37,8 +37,8 @@
     </ion-item>
     </ion-col>
     <ion-col col-6>
-      <button *ngIf="imageLoad == false" (click)="uploadPic()" ion-button color="light" large>Upload Pic +</button>
-      <button [disabled]="true" *ngIf="imageLoad == true" ion-button color="success">Image loading...</button>
+      <button *ngIf="!imageLoad" (click)="uploadPic()" ion-button color="light" large>Upload Pic +</button>
+      <button [disabled]="true" *ngIf="imageLoad" ion-button color="success">Image loading...</button>
     </ion-col>
   </ion-row>
   <ion-row>
