@@ -20,7 +20,7 @@
           <h5>Tell Us About Your Organization</h5>
           <ion-textarea class="inputStyle" id="orgAbout" type="text" name="orgAbout" rows="5" ngModel required></ion-textarea>
           <div text-center>
-            <button ion-button class="smallMarginTop" color="success" (click)="submitOrgInfo(f)">Submit</button>
+            <button [disabled]="!f.valid" ion-button class="smallMarginTop" color="success" (click)="submitOrgInfo(f)">Submit</button>
           </div>
         </form>
       </ion-col>
