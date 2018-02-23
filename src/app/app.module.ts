@@ -22,6 +22,8 @@ import { OrgPostEventPage } from "../pages/org-post-event/org-post-event";
 import { EventsSelectedPage } from "../pages/events-selected/events-selected";
 import { DatePicker } from '@ionic-native/date-picker';
 import { Camera } from '@ionic-native/camera';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
+import { Geolocation } from '@ionic-native/geolocation';
 
 
 
@@ -72,7 +74,9 @@ import { Camera } from '@ionic-native/camera';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegisterService,
     DatePicker,
-    Camera
+    Camera,
+    NativeGeocoder,
+    Geolocation
   ]
 })
 export class AppModule {}
