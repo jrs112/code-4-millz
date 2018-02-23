@@ -19,6 +19,7 @@ import { HomePage } from "../pages/home/home";
 import { UserSettingsPage } from "../pages/user-settings/user-settings";
 import { OrgInviteRequestPage } from "../pages/org-invite-request/org-invite-request";
 import { OrgPostEventPage } from "../pages/org-post-event/org-post-event";
+import { EventsSelectedPage } from "../pages/events-selected/events-selected";
 import { DatePicker } from '@ionic-native/date-picker';
 import { Camera } from '@ionic-native/camera';
 
@@ -40,7 +41,8 @@ import { Camera } from '@ionic-native/camera';
     HomePage,
     UserSettingsPage,
     OrgInviteRequestPage,
-    OrgPostEventPage
+    OrgPostEventPage,
+    EventsSelectedPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import { Camera } from '@ionic-native/camera';
     HomePage,
     UserSettingsPage,
     OrgInviteRequestPage,
-    OrgPostEventPage
+    OrgPostEventPage,
+    EventsSelectedPage
   ],
   providers: [
     StatusBar,

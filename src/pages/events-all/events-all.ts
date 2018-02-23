@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EventsSelectedPage } from "../events-selected/events-selected";
 
 
 @IonicPage()
@@ -40,7 +41,7 @@ export class EventsAllPage {
     DisplayTitle: "Republican Meetup",
     Description: "dfjklsjdfkljsdfkljlkja;lkj sdjfkljs dflkj lskdjfkl sjdflj skldjflks dfjlk fdlsjkdf sdlkjflk sdlkfjlksjdf sdfkljs df lkjsdf",
     CategoryName:"Rally/protest",
-    StartTime: "1/2/17",
+    StartTime: "2016-01-20T19:00:00+0000",
     EndTime: "1/3/17",
     AddressDisplayName: "The Mac House",
     StreetAddressOne: "825 International Drive",
@@ -56,7 +57,7 @@ export class EventsAllPage {
     DisplayTitle: "Dem Meetup",
     Description: "Dems Dems Dems Dems Demmmmms Dems Dems",
     CategoryName:"Community",
-    StartTime: "2/16/17",
+    StartTime: "2016-01-20T19:00:00+0000",
     EndTime: "2/18/17",
     AddressDisplayName: "The Gate Post House",
     StreetAddressOne: "5951 Gate Post Rd",
@@ -71,8 +72,8 @@ export class EventsAllPage {
     OrganizationUserName: "Libs For Everyone",
     DisplayTitle: "Libs Meetup",
     Description: "Libss Libss Libss Libss Libsmmmms Libss Libss",
-    CategoryName:"informational",
-    StartTime: "3/16/17",
+    CategoryName:"information",
+    StartTime: "2016-01-20T19:00:00+0000",
     EndTime: "3/18/17",
     AddressDisplayName: "The Lib House",
     StreetAddressOne: "1111 Lib Rd",
@@ -88,7 +89,7 @@ export class EventsAllPage {
     DisplayTitle: "Ed Meetup",
     Description: "Eds Eds Eds Eds Edmmmms Eds Eds",
     CategoryName:"school meeting",
-    StartTime: "3/16/17",
+    StartTime: "2016-01-20T19:00:00+0000",
     EndTime: "3/18/17",
     AddressDisplayName: "The Ed House",
     StreetAddressOne: "1111 Ed Rd",
@@ -104,7 +105,7 @@ export class EventsAllPage {
     DisplayTitle: "Guns Meetup",
     Description: "Gunss Gunss Gunss Gunss Gunsmmmms Gunss Gunss",
     CategoryName:"independent activity",
-    StartTime: "4/16/17",
+    StartTime: "2016-01-20T19:00:00+0000",
     EndTime: "4/18/17",
     AddressDisplayName: "The Gun House",
     StreetAddressOne: "1111 Gun Rd",
@@ -175,6 +176,25 @@ export class EventsAllPage {
     this.suggestedEventsArr = this.suggestedEventsArr.filter((elem, index, self) => {
           return index == self.indexOf(elem);
     });
+  }
+
+  selectEvent(event) {
+    this.navCtrl.push(EventsSelectedPage, {
+      OrganizationUserName: event.OrganizationUserName,
+      DisplayTitle: event.DisplayTitle,
+      Description: event.Description,
+      CategoryName: event.CategoryName,
+      StartTime: event.StartTime,
+      EndTime: event.EndTime,
+      AddressDisplayName: event.AddressDisplayName,
+      StreetAddressOne: event.StreetAddressOne,
+      StreetAddressTwo: event.StreetAddressTwo,
+      City: event.City,
+      State: event.State,
+      Zip: event.Zip,
+      Tags: event.Tags,
+      ImageUrl: event.ImageUrl
+    })
   }
 
 }
