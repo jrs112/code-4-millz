@@ -37,4 +37,12 @@
   <div text-center>
     <button ion-button class="rsvpBtnStyle" color="success">RSVP</button>
   </div>
+  <div text-right *ngIf="!userCheckedIn">
+    <button ion-button clear color="dark" icon-only class="submitBtn" (click)="checkIn()"><ion-icon name="md-square-outline"></ion-icon></button>
+    <div (click)="checkIn()" class="submitBtn"><strong>Check In!</strong></div>
+  </div>
+  <div text-right *ngIf="userCheckedIn">
+    <button ion-button clear color="success" icon-only class="submitBtn"><ion-icon name="md-checkbox-outline"></ion-icon></button>
+    <div class="submitBtn" color="success"><strong>You Have Checked In!</strong></div>
+  </div>
 </ion-content>
