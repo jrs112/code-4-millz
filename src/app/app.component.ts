@@ -14,6 +14,7 @@ import { UserRegisterDistrictPage } from "../pages/user-register-district/user-r
 import { UserRegisterFinalPage } from "../pages/user-register-final/user-register-final";
 import { OrgInviteRequestPage } from "../pages/org-invite-request/org-invite-request";
 import { OrgPostEventPage } from "../pages/org-post-event/org-post-event";
+import { EventsSelectedPage } from "../pages/events-selected/events-selected";
 
 @Component({
   templateUrl: 'app.html'
@@ -29,6 +30,7 @@ export class MyApp {
   authPage = UserRegisterAuthInfoPage;
   orgInviteRequestPage = OrgInviteRequestPage;
   postEventPage = OrgPostEventPage;
+  selectedEventPage = EventsSelectedPage;
   @ViewChild('nav') nav: NavController;
 
 
