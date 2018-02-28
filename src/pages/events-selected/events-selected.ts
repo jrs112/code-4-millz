@@ -29,6 +29,7 @@ export class EventsSelectedPage {
   eventLat = "";
   eventLong = "";
   userCheckedIn = false;
+  locationSearch = false;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -52,12 +53,14 @@ export class EventsSelectedPage {
   }
 
   checkIn() {
+    this.locationSearch = true;
     this.geolocation.getCurrentPosition().then((resp) => {
    console.log("user lat: ", resp.coords.latitude)
    console.log( "user long: ", resp.coords.longitude)
    var dist = this.distance(this.eventLat, this.eventLong, resp.coords.latitude, resp.coords.longitude, "M");
    console.log("Distance", dist);
    if(dist > 1) {
+     this.locationSearch = false;
      var shortDist = Math.round(dist * 100) / 100;
      let alert = this.alertCtrl.create({
        title: "You are too far away from the event!",
@@ -70,6 +73,7 @@ export class EventsSelectedPage {
    }
     }).catch((error) => {
       console.log('Error getting location', error);
+      this.locationSearch = false;
 
 
     });
@@ -93,6 +97,7 @@ export class EventsSelectedPage {
 
     checkUserIn() {
       this.userCheckedIn = true;
+      this.locationSearch = false;
     }
 
 
